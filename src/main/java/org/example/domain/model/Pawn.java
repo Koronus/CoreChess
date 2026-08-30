@@ -20,17 +20,16 @@ public class Pawn implements Piece {
 
     private ColorPiece colorPiece;
     private String icon;
-    @Override
-    public String getName() {
-        return "";
+    private boolean startPos = true;
+
+    public Pawn(ColorPiece colorPiece, String icon) {
+        this.colorPiece = colorPiece;
+        this.icon = icon;
     }
 
     @Override
-    public String toString() {
-        return "Pawn{" +
-                "colorPiece=" + colorPiece +
-                ", icon='" + icon + '\'' +
-                '}';
+    public String getName() {
+        return "";
     }
 
     @Override
@@ -39,24 +38,55 @@ public class Pawn implements Piece {
     }
 
     @Override
+    public ColorPiece getColor() {
+        return colorPiece;
+    }
+
+    @Override
     public String move() {
         return "";
     }
 
+
+
     @Override
-    public List<Cell> analyzeHint(int col, int row, Board board) {
-        Cell[][] cellArr = board.getFields();
+    public List<Cell> analyzeHint(int row, int col, Board board) {
+
+        ColorPiece colorPiece = board.getPieceFromCell(row,col).getColor();
+        int direction = colorPiece.equals(ColorPiece.WHITE) ? 1 : -1;
         List<Cell> moveHint = new ArrayList<>();
-        if(cellArr[col-1][row].getPieceCell() == null){
-            moveHint.add(new Cell(col-1,row));
+        int nextRow = row + direction;
+
+        if(board.checkNextMove(nextRow, col, colorPiece) ){
+            if(board.getPieceFromCell(nextRow, col)==null){
+                moveHint.add(board.getCell(nextRow,col));
+                if(board.getPieceFromCell(nextRow+direction, col)==null && startPos){
+                    moveHint.add(board.getCell(nextRow+direction,col));
+                }
+            }
+
         }
-        if(cellArr[col-1][row-1].getPieceCell() == null){
-            moveHint.add(new Cell(col-1,row-1));
+
+        if(board.checkNextMove(nextRow, col-1, colorPiece)){
+            if(board.getPieceFromCell(nextRow, col-1) !=null){
+                moveHint.add(board.getCell(nextRow,col-1));
+            }
+
         }
-        if(cellArr[col-1][row+1].getPieceCell() == null){
-            moveHint.add(new Cell(col-1,row+1));
+        if(board.checkNextMove(nextRow, col+1, colorPiece)){
+            if(board.getPieceFromCell(nextRow, col+1) !=null){
+                moveHint.add(board.getCell(nextRow,col+1));
+            }
         }
         return moveHint;
+    }
+
+    @Override
+    public String toString() {
+        return "Pawn{" +
+                "colorPiece=" + colorPiece +
+                ", icon='" + icon + '\'' +
+                '}';
     }
 
 }

@@ -31,6 +31,11 @@ public class King implements Piece {
     }
 
     @Override
+    public ColorPiece getColor() {
+        return colorPiece;
+    }
+
+    @Override
     public String move() {
         return "";
     }

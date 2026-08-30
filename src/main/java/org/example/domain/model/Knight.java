@@ -29,6 +29,11 @@ public class Knight implements Piece {
     }
 
     @Override
+    public ColorPiece getColor() {
+        return colorPiece;
+    }
+
+    @Override
     public String toString() {
         return "Knight{" +
                 "colorPiece=" + colorPiece +

@@ -9,13 +9,16 @@ import java.util.List;
 
 public class GameRuleService {
 
+    public void movingPiece(int row, int col,int moveRow,int moveCol, List<Cell> moveHint){
+
+    }
 
 
-    public void analyzeMove(int col, int row, Board board){
+    public void analyzeMove(int row, int col, Board board){
 
-        Piece piece = board.getFields()[col][row].getPieceCell();
+        Piece piece = board.getPieceFromCell(row,col);
 
-        List<Cell> moveHint = piece.analyzeHint(col, row, board);
+        List<Cell> moveHint = piece.analyzeHint(row, col, board);
 
         moveHint.stream().forEach(System.out::println);
 

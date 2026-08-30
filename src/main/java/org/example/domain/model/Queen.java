@@ -30,6 +30,11 @@ public class Queen implements Piece {
     }
 
     @Override
+    public ColorPiece getColor() {
+        return colorPiece;
+    }
+
+    @Override
     public String move() {
         return "";
     }

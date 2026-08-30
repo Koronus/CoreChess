@@ -14,4 +14,5 @@ public interface Piece {
     String getIcon();
     List<Cell> analyzeHint(int col, int row, Board board);
     void setColor(ColorPiece colorPiece);
+    ColorPiece getColor();
 }

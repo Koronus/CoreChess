@@ -18,17 +18,18 @@ public class Cell {
 
 
 
-    public Cell(int col, int row) {
-        this.col = col;
+    public Cell(int  row, int col) {
         this.row = row;
+        this.col = col;
+
     }
 
 
     @Override
     public String toString() {
         return "Cell{" +
-                "col=" + col +
-                ", row=" + row +
+                "row=" + row +
+                ", col=" + col +
                 ", pieceCell=" + pieceCell +
                 '}';
     }
