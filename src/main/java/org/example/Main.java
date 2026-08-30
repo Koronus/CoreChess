@@ -16,6 +16,7 @@ public class Main {
 
           board.printBoard();
         //board.printBoardReverse();
+
         gameRule.analyzeMove(4,4,board);
     }
 }
