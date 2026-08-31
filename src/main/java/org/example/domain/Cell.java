@@ -13,7 +13,7 @@ import org.example.domain.model.Piece;
 public class Cell {
 
 
-    private int col,row;
+    private int row,col;
     private Piece pieceCell;
 
 

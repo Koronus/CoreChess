@@ -57,7 +57,7 @@ public class Board {
             fields[0][col].setPieceCell(pieceArrWhite[col]);
         }
         //fields[4][4].setPieceCell(new Rook(BLACK,"\u265C"));
-        fields[4][4].setPieceCell(new Bishop(BLACK,"\u265D"));
+        //fields[4][4].setPieceCell(new Bishop(WHITE,"\u2657"));
         //fields[5][6].setPieceCell(new Pawn(WHITE,"\u265F"));
 //        log.info(""+fields[5][3].getPieceCell());
         //fields[5][5].setPieceCell(new Rook(BLACK,"\u265C"));
@@ -68,6 +68,13 @@ public class Board {
 
     public Piece getPieceFromCell(int row, int col){
             return fields[row][col].getPieceCell();
+    }
+
+    public void setPieceCell(int row, int col,int moveRow,int moveCol, Piece piece){
+        fields[moveRow][moveCol].setPieceCell(piece);
+        fields[row][col].setPieceCell(null);
+
+
     }
 
     public Cell getCell(int row, int col){
