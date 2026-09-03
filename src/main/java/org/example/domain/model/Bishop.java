@@ -55,11 +55,11 @@ public class Bishop implements Piece {
         ColorPiece colorPiece = board.getPieceFromCell(row,col).getColor();
         List<Cell> moveHint = new ArrayList<>();
 
-        int[] arrIndexRow = {1, -1, 1, -1};
-        int[] arrIndexCol = {-1, 1, 1, -1};
 
-        for(int i = 0; i < arrIndexRow.length; i++){
-            coefRow = arrIndexRow[i]; coefCol = arrIndexCol[i];
+        int[][] arrDirectionMove = {{1,-1},{-1,1},{1,1},{-1,-1}} ;
+
+        for(int[] arrDir : arrDirectionMove){
+            coefRow = arrDir[0]; coefCol = arrDir[1];
             moveHint.addAll(iteratingCells(coefRow+row, coefCol+col, coefRow,coefCol,colorPiece,board));
         }
 

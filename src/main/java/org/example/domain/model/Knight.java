@@ -8,6 +8,7 @@ import org.example.domain.Board;
 import org.example.domain.Cell;
 import org.example.domain.ColorPiece;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Setter
@@ -46,9 +47,27 @@ public class Knight implements Piece {
         return "";
     }
 
+
     @Override
-    public List<Cell> analyzeHint(int col, int row, Board board) {
-        return List.of();
+    public List<Cell> analyzeHint(int row, int col, Board board) {
+        int coefRow, coefCol;
+        ColorPiece colorPiece = board.getPieceFromCell(row,col).getColor();
+        List<Cell> moveHint = new ArrayList<>();
+
+        int[][] arrDirectionMove = {{1,-2},{1,2},{2,-1},{2,1},{-1,-2},{-1,2},{-2,-1},{-2,1}} ;
+
+        for(int[] arrDir : arrDirectionMove){
+            coefRow = arrDir[0]; coefCol = arrDir[1];
+
+            if(board.checkNextMove(row+coefRow,col+coefCol,colorPiece)){
+                moveHint.add(board.getCell(row+coefRow,col+coefCol));
+            }
+        }
+
+
+
+
+        return moveHint;
     }
 
 }

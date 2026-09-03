@@ -64,13 +64,13 @@ public class Rook implements Piece {
         ColorPiece colorPiece = board.getPieceFromCell(row,col).getColor();
         List<Cell> moveHint = new ArrayList<>();
 
-        int[] arrIndexRow = {-1, 1, 0, 0};
-        int[] arrIndexCol = {0, 0, 1, -1};
+        int[][] arrDirectionMove = {{-1,0},{1,0},{0,1},{0,-1}} ;
 
-        for(int i = 0; i < arrIndexRow.length; i++){
-            coefRow = arrIndexRow[i]; coefCol = arrIndexCol[i];
+        for(int[] arrDir : arrDirectionMove){
+            coefRow = arrDir[0]; coefCol = arrDir[1];
             moveHint.addAll(iteratingCells(coefRow+row, coefCol+col, coefRow,coefCol,colorPiece,board));
         }
+
 
         return moveHint;
     }

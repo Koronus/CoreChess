@@ -14,13 +14,13 @@ public class Main {
 
         GameRuleService gameRule = new GameRuleService();
 
-          board.printBoard();
+
         //board.printBoardReverse();
 
-        //gameRule.analyzeMove(4,4,board);
-        gameRule.movingPiece(1,4,2,4,board);
-        board.printBoard();
-        gameRule.movingPiece(2,4,3,4,board);
-        board.printBoard();
+        gameRule.analyzeMove(0,3,board);
+//        gameRule.movingPiece(1,4,2,4,board);
+//        board.printBoard();
+//        gameRule.movingPiece(2,4,3,4,board);
+       board.printBoard();
     }
 }

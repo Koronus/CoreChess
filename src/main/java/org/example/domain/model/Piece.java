@@ -12,7 +12,7 @@ public interface Piece {
     String getName();
     String move();
     String getIcon();
-    List<Cell> analyzeHint(int col, int row, Board board);
+    List<Cell> analyzeHint(int row, int col, Board board);
     void setColor(ColorPiece colorPiece);
     ColorPiece getColor();
 }

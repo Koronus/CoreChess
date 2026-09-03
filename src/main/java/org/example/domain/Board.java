@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.example.domain.model.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 import static org.example.domain.ColorPiece.BLACK;
@@ -57,6 +59,8 @@ public class Board {
             fields[0][col].setPieceCell(pieceArrWhite[col]);
         }
         //fields[4][4].setPieceCell(new Rook(BLACK,"\u265C"));
+        //fields[4][4].setPieceCell(new Queen(BLACK,"\u265B"));
+        //fields[3][4].setPieceCell(new Knight(BLACK,"\u265E"));
         //fields[4][4].setPieceCell(new Bishop(WHITE,"\u2657"));
         //fields[5][6].setPieceCell(new Pawn(WHITE,"\u265F"));
 //        log.info(""+fields[5][3].getPieceCell());
@@ -83,6 +87,8 @@ public class Board {
 
     public Boolean checkNextMove(int row, int col, ColorPiece colorPiece){
 
+
+
         if(row < 0 || row > 7 || col < 0 || col > 7){
             return false;
         }
@@ -95,6 +101,38 @@ public class Board {
 
         }
         return true;
+    }
+
+    private Boolean checkAttackingMoves(int row, int col,ColorPiece colorPiece){
+        int coefRow, coefCol;
+        List<Cell> attckMove = new ArrayList<>();
+        int[][] arrDirectionMoveAsKnight = {{1,-2},{1,2},{2,-1},{2,1},{-1,-2},{-1,2},{-2,-1},{-2,1}} ;
+        int[][] arrDirectionMoveAsQueen = {{-1,0},{1,0},{0,1},{0,-1},{1,-1},{-1,1},{1,1},{-1,-1}} ;
+
+        for (int i = 7; i >= 0; i--) {
+            for (int j = 7; j >= 0; j--) {
+                Piece piece = fields[i][j].getPieceCell();
+                if(piece != null){
+                    if(!piece.getColor().equals(colorPiece)){
+
+                    }
+                }
+                else{
+                    System.out.print(" ");
+                }
+
+                //log.info(fields[i][j]+"");
+
+
+            }
+
+
+        }
+
+
+
+        return true;
+
     }
 
     public void printBoardReverse() {
@@ -123,7 +161,7 @@ public class Board {
                     System.out.print(fields[i][j].getPieceCell().getIcon()+" ");
                 }
                 else{
-                    System.out.print("  ");
+                    System.out.print(" ");
                 }
 
                 //log.info(fields[i][j]+"");
